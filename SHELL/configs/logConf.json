@@ -1,0 +1,12 @@
+{
+
+    "body": "['FD']\n=>['LT'] 'U' from 'APP' --> 'LOG'",
+    "symbols": {
+
+        "normal": "i",
+        "warn": "!",
+        "error": "X",
+        "critError": "X",
+        "success": "V"
+    }
+}
