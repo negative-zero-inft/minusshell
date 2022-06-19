@@ -1,0 +1,18 @@
+{
+
+    "programs": {
+
+        "path": "/programs"
+    },
+    "defaults": {
+
+        "shell": {
+
+            "name": "MSHSH"
+        },
+        "loginManager": {
+
+            "name": "MSHLM"
+        }
+    }
+}
