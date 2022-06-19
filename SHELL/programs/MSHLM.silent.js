@@ -68,7 +68,7 @@ const exec = (programs, oldRl) =>{
             if(usr.auto){
 
                 nztk.log.warn(`AUTOMATICALLY LOGGED IN TO ${usr.name}, PLEASE CHANGE auto TO false IN /SHELL/other/users/${file} IF YOU WANT TO REMOVE THIS`, 2, '')
-                return programs.get(globalConf.defaults.shell.name).run(usr, rl)
+                return programs.get(globalConf.defaults.shell.name).run(usr, rl, programs)
             }
         }
         
@@ -118,7 +118,7 @@ const exec = (programs, oldRl) =>{
                             
                             if(bcrypt.compareSync(pswd, user.password)){
                                 
-                                programs.get(globalConf.defaults.shell.name).run(user, rl)
+                                programs.get(globalConf.defaults.shell.name).run(user, rl, programs)
                             }else{
     
                                 nztk.log.warn(`incorrect password`, 2, '')

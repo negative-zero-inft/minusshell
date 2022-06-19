@@ -9,7 +9,7 @@ const usage = "set as the default shell it in globalConf"
 
 // the function that gets executed
 
-const exec = (user, oldRl) =>{
+const exec = (user, oldRl, programs) =>{
 
     // close that rl
 
@@ -128,6 +128,7 @@ const exec = (user, oldRl) =>{
                 appStuff: {
 
                     apps: apps,
+                    allPrograms: programs,
                     readline: rl,
                     mem: mem
                 }
