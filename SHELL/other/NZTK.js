@@ -5,6 +5,7 @@ const setupPS1 = require('./NZTK/setupPS1')
 const rf = require('./NZTK/readFile')
 const mf = require('./NZTK/moveFile')
 const rm = require('./NZTK/remove')
+const im = require('./NZTK/import')
 
 // the lib itself
 

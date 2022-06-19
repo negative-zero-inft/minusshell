@@ -48,6 +48,10 @@ const exec = (NZSHHStuff, cb) =>{
             mspmh.refresh()
             break
 
+        case "i":
+            mspmh.install(args[2])
+            break
+
         default: 
             return cb({name: name, exitCode: 1, value: "you can only use [install/remove/update/refresh/add] (or [i/u/r/a])"})
     }

@@ -55,6 +55,16 @@ const exec = (user, oldRl, programs) =>{
 
     const apps = new Map()
     const users = new Map()
+
+    // i don't want caching of apps
+
+    const noncache = (module) =>{
+
+        require("fs").watchFile(require("path").resolve(module), () =>{
+    
+            delete require.cache[require.resolve(module)]
+        })
+    }
     
     // get the users
 
@@ -84,6 +94,7 @@ const exec = (user, oldRl, programs) =>{
         const cmds = fs.readdirSync(`./SHELL${globalConf.programs.path}`).filter(file => file.endsWith(`.app.js`));
         for(const file of cmds){
 
+            noncache(`..${globalConf.programs.path}/${file}`)
             const cmd = require(`..${globalConf.programs.path}/${file}`);
                 
             nztk.log.success(`found app ${cmd.name}`, 2, "start")
@@ -103,6 +114,21 @@ const exec = (user, oldRl, programs) =>{
 
     const ask = async () =>{
 
+        // reload apps
+        try{
+
+            const cmds = fs.readdirSync(`./SHELL${globalConf.programs.path}`).filter(file => file.endsWith(`.app.js`));
+            for(const file of cmds){
+    
+                noncache(`..${globalConf.programs.path}/${file}`)
+                const cmd = require(`..${globalConf.programs.path}/${file}`);
+            
+                apps.set(cmd.name, cmd)
+            }
+        }catch(err){
+    
+            nztk.log.error(`couldn't load apps`, 1, 'start')
+        }
         await nztk.setupPS1(shellConf.PS1, (data) =>{rl.question(data, (line) =>{
     
             // the stuff that happens after enter was pressed

@@ -1,6 +1,7 @@
 // any imports if your lib is beeg brain
 
 const add = require('./MSPM/add')
+const install = require('./MSPM/install')
 const refresh = require('./MSPM/refresh')
 
 // test function
@@ -26,5 +27,10 @@ module.exports = class MSPMH{
     refresh(){
 
         refresh(this.nztk, this.name, this.cb, this.conf)
+    }
+
+    install(pkg){
+
+        install(pkg, this.nztk, this.name, this.conf, this.cb)
     }
 }
