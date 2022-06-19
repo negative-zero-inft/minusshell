@@ -129,7 +129,7 @@ const exec = (user, oldRl) =>{
 
                     apps: apps,
                     readline: rl,
-                    memory: mem
+                    mem: mem
                 }
             }
 
@@ -141,7 +141,7 @@ const exec = (user, oldRl) =>{
                     
                     const r = () =>{
 
-                        console.time('execution time')
+                        console.time(`execution time`)
                         cmd.run(NZSHHStuff, (ev) =>{
 
                             if(ev.exitCode === 0){
@@ -154,7 +154,7 @@ const exec = (user, oldRl) =>{
 
                             // recursivness
 
-                            console.timeEnd("execution time")
+                            console.timeEnd(`execution time`)
                             ask()
                         })
                     }

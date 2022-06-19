@@ -33,27 +33,27 @@ const exec = (NZSHHStuff, cb) =>{
 
         case "normal":
             if(!args[2]) return cb({name: name, exitCode: 1, value: "please input what i'm supposed to echo"})
-            else nztk.log.normal(args[2], 2, '')
+            nztk.log.normal(args[2], 2, '')
             break
 
         case "warn":
             if(!args[2]) return cb({name: name, exitCode: 1, value: "please input what i'm supposed to echo"})
-            else nztk.log.warn(args[2], 2, '')
+            nztk.log.warn(args[2], 2, '')
             break
 
         case "error":
             if(!args[2]) return cb({name: name, exitCode: 1, value: "please input what i'm supposed to echo"})
-            else nztk.log.error(args[2], 2, '')
+            nztk.log.error(args[2], 2, '')
             break
 
         case "critError":
             if(!args[2]) return cb({name: name, exitCode: 1, value: "please input what i'm supposed to echo"})
-            else nztk.log.critError(args[2], 2, '')
+            nztk.log.critError(args[2], 2, '')
             break
 
         case "success":
             if(!args[2]) return cb({name: name, exitCode: 1, value: "please input what i'm supposed to echo"})
-            else nztk.log.success(args[2], 2, '')
+            nztk.log.success(args[2], 2, '')
             break
 
         default:

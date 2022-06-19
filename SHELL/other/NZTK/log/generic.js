@@ -42,9 +42,9 @@ module.exports = (logObject) =>{
         
         // check if the loudness is 1 or 3, where 1 is only save to hard drive, 2 is log and save and 3 is only show on the screen. no more console.log()!
     
-        if(logObject.loudness == 0 || logObject.loudness == 1){
+        if(logObject.loudness === 0 || logObject.loudness === 1){
     
-            fs.appendFile(`./SHELL/logs/${logObject.dir}/${logObject.file}.txt`, logObject.message, (err) => {
+            fs.appendFile(`./SHELL/logs/${logObject.dir}/${logObject.file}.txt`, msg + "\n", (err) => {
     
                 if(err) console.log(colors.red("an error occured by logging. this may be caused by the target folder not being there, this should fix itself"))
             });
@@ -52,7 +52,7 @@ module.exports = (logObject) =>{
     
         // i like nesting, if you don't then don't look at my code lmao
     
-        if(logObject.loudness == 1 || logObject.loudness == 2){
+        if(logObject.loudness === 1 || logObject.loudness === 2){
     
             switch(logObject.type){
 

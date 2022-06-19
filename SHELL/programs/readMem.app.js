@@ -2,10 +2,10 @@
 
 // info about the app, required for it to run
 
-const name = "history"
-const desc = "spit out what you've entered into -SH"
+const name = "readmem"
+const desc = "reads out what you have in the temp -SH memory (dangerous)"
 const version = "0.0.1"
-const usage = "history"
+const usage = "readmem"
 
 // the function that gets executed
 
@@ -23,16 +23,18 @@ const exec = (NZSHHStuff, cb) =>{
 
     // the entirety of your code
 
-    nztk.readFile(`./SHELL/logs/MSHSH/history.txt`, (d, e) =>{
+    console.log(NZSHHStuff.appStuff.mem)
 
-        if(!e) nztk.log.normal(d, 2, '')
-        else return cb({name: name, exitCode: 1, value: e})
-        return cb({
+    // end end the program
 
-            name: name,
-            exitCode: 0,
-            value: d
-        })
+    cb({
+
+        name: name,
+        exitCode: 0,
+        value: {
+
+            something: "bruh"
+        }
     })
 }
 

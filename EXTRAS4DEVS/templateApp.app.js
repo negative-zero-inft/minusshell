@@ -25,7 +25,7 @@ const exec = (NZSHHStuff, cb) =>{
 
     // end end the program
 
-    cb({
+    return cb({
 
         name: name,
         exitCode: 0,
