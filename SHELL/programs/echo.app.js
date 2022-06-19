@@ -46,7 +46,7 @@ const exec = (NZSHHStuff, cb) =>{
             nztk.log.error(args[2], 2, '')
             break
 
-        case "critError":
+        case "criterror":
             if(!args[2]) return cb({name: name, exitCode: 1, value: "please input what i'm supposed to echo"})
             nztk.log.critError(args[2], 2, '')
             break
