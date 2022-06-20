@@ -11,12 +11,13 @@ const refresh = require('./MSPM/refresh')
 
 module.exports = class MSPMH{
 
-    constructor(name, nztk, conf, cb){
+    constructor(name, nztk, conf, cb, NZSHHStuff){
 
         this.name = name
         this.nztk = nztk
         this.conf = conf
         this.cb = cb
+        this.NZSHHStuff = NZSHHStuff
     }
 
     add(args){
@@ -29,8 +30,8 @@ module.exports = class MSPMH{
         refresh(this.nztk, this.name, this.cb, this.conf)
     }
 
-    install(pkg){
+    install(pkg, cb){
 
-        install(pkg, this.nztk, this.name, this.conf, this.cb)
+        install(pkg, this.nztk, this.name, this.conf, cb, this.NZSHHStuff, this.NZSHHStuff.appStuff.readline)
     }
 }

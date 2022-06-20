@@ -5,7 +5,7 @@
 const name = "name"
 const desc = "description of the app"
 const version = "0.0.0"
-const usage = "how to use the app"
+const usage = "command [required param] <optional param>"
 
 // the function that gets executed
 

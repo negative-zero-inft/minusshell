@@ -18,7 +18,7 @@ const exec = (NZSHHStuff, cb) =>{
     const nztk = new NZTK(name, NZSHHStuff.users.current)
     const fs = require('fs')
     const MSPMH = require('../other/MSPMH')
-    const mspmh = new MSPMH(name, nztk, require('../configs/MSPM/main.json'), cb)
+    const mspmh = new MSPMH(name, nztk, require('../configs/MSPM/main.json'), cb, NZSHHStuff)
 
     // any configs you might need
 
@@ -49,7 +49,11 @@ const exec = (NZSHHStuff, cb) =>{
             break
 
         case "i":
-            mspmh.install(args[2])
+            mspmh.install(args[2], cb)
+            break
+
+        case "install":
+            mspmh.install(args[2], cb)
             break
 
         default: 

@@ -24,7 +24,10 @@ module.exports = (nztk, name, cb, conf) =>{
 
         if(n === conf.repos.length - 1){
 
-            console.log(JSON.stringify(packages))
+            if(packages.length < 1){
+
+                nztk.log.warn(`you need to rerun mspm refresh because of one stupid bug i literally cannot fix`, 2, '')
+            }
             fs.writeFile(`./SHELL/configs/MSPM/repo.json`, JSON.stringify(packages), (err) =>{
 
                 if(err) return cb({name: name, exitCode: 1, value: err})

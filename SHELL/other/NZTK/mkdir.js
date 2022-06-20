@@ -7,6 +7,7 @@ module.exports = (path, app, user, cb) =>{
 
     fs.mkdir(path,  (e) =>{
 
+        if(!e) nztk.log.success(`made a folder at ${path}`, 1, 'mkdir')
         cb(e)
     })
 }

@@ -4,9 +4,9 @@ module.exports = (file, destination, app, user, cb) =>{
     const nztk = new NZTK(app, user)
     const fs = require('fs')
 
-    fs.rename(file, destination, (e) =>{
+    fs.copyFile(file, destination, (e) =>{
 
-        if(!e) nztk.log.success(`moved ${file} to ${destination}`, 1, 'move')
+        if(!e) nztk.log.success(`copied ${file} to ${destination}`, 1, 'move')
         cb(e)
     })
 }
