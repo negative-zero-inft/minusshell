@@ -3,10 +3,10 @@
 
 // info about the app, required for it to run
 
-const name = "clearLogs"
-const desc = "clean up your logs"
+const name = "exec"
+const desc = "execute a system command"
 const version = "0.0.1"
-const usage = "clearLogs <app>"
+const usage = "exec [command]"
 
 // the function that gets executed
 
@@ -16,7 +16,7 @@ const exec = (NZSHHStuff, cb) =>{
 
     const NZTK = require('../other/NZTK')
     const nztk = new NZTK(name, NZSHHStuff.users.current)
-    const fs = require('fs')
+    const shell = require('shelljs')
 
     // any configs you might need
 
@@ -25,26 +25,11 @@ const exec = (NZSHHStuff, cb) =>{
     // the entirety of your code
 
     const args = NZSHHStuff.input.args
-    if(!args[1]){
+    const raw = NZSHHStuff.input.raw
+    const cmd = raw.substring(args[0].length)
 
-        nztk.remove(`./SHELL/logs`, (e) =>{
-
-            if(e) return cb({name: name, exitCode: 1, value: e})
-        })
-    }else{
-
-        if(fs.existsSync(`./SHELL/logs/${args[1]}`)){
-
-            nztk.remove(`./SHELL/logs/${args[1]}`, (e) =>{
-
-                if(e) return cb({name: name, exitCode: 1, value: e})
-            })
-        }else{
-
-            cb({name: name, exitCode: 1, value: `there are no logs of ${args[1]}`})
-        }
-    }
-
+    shell.exec(cmd)
+    
     // end the program
 
     return cb({name: name, exitCode: 0, value: "exited the program"})
