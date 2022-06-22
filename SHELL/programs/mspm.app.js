@@ -33,36 +33,32 @@ const exec = (NZSHHStuff, cb) =>{
     switch(args[1].toLowerCase()){
 
         case "add":
-            mspmh.add(args)
+            return mspmh.add(args)
             break
         
         case "a":
-            mspmh.add(args)
+            return mspmh.add(args)
             break
 
         case "refresh":
-            mspmh.refresh()
+            return mspmh.refresh()
             break
 
         case "r":
-            mspmh.refresh()
+            return mspmh.refresh()
             break
 
         case "i":
-            mspmh.install(args[2], cb)
+            return mspmh.install(args[2], cb)
             break
 
         case "install":
-            mspmh.install(args[2], cb)
+            return mspmh.install(args[2], cb)
             break
 
         default: 
             return cb({name: name, exitCode: 1, value: "you can only use [install/remove/update/refresh/add] (or [i/u/r/a])"})
     }
-
-    // end the program
-
-    return cb({name: name, exitCode: 0, value: "exited the program"})
 }
 
 // export the app

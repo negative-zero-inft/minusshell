@@ -39,12 +39,6 @@ const exec = (user, oldRl, programs) =>{
             callback();
         }
     });
-    var rl = require('readline').createInterface({
-
-        input: process.stdin,
-        output: mutableStdout,
-        terminal: true
-    })
 
     // any configs you might need
 
@@ -114,8 +108,7 @@ const exec = (user, oldRl, programs) =>{
 
     const ask = async () =>{
 
-        await rl.close()
-        rl = await require('readline').createInterface({
+        var rl = await require('readline').createInterface({
 
             input: process.stdin,
             output: mutableStdout,
@@ -178,6 +171,7 @@ const exec = (user, oldRl, programs) =>{
                     const r = () =>{
 
                         console.time(`execution time`)
+                        rl.close()
                         cmd.run(NZSHHStuff, (ev) =>{
 
                             if(ev.exitCode === 0){
@@ -203,20 +197,12 @@ const exec = (user, oldRl, programs) =>{
             }else{
 
                 nztk.log.error(`couldn't find program ${primArgs[0]}, maybe try using help`, 2, 'a')
-
+                rl.close()
                 ask()
             }
         })})
     }
-
     ask()
-
-    // after the readline is closed
-    
-    rl.on('close', () =>{
-
-        nztk.log.warn('readline was closed', 2, 'a')
-    })
 }
 
 // export the app

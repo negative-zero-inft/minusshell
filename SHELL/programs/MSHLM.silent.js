@@ -9,12 +9,7 @@ const usage = "set as the default login manager it in globalConf"
 
 // the function that gets executed
 
-const exec = (programs, oldRl) =>{
-
-    try{
-
-        oldRl.close()
-    }catch(err){}
+const exec = (programs) =>{
 
     // any libs you might need
 
@@ -35,12 +30,6 @@ const exec = (programs, oldRl) =>{
             callback();
         }
     });
-    const rl = require('readline').createInterface({
-
-        input: process.stdin,
-        output: mutableStdout,
-        terminal: true
-    })
     const bcrypt = require('bcrypt')
 
     // any configs you might need
@@ -56,6 +45,12 @@ const exec = (programs, oldRl) =>{
     
     try{
         
+        var rl = require('readline').createInterface({
+
+            input: process.stdin,
+            output: mutableStdout,
+            terminal: true
+        })
         const usrs = fs.readdirSync(`./SHELL/other/users/`).filter(file => file.endsWith(`.json`));
         for(const file of usrs){
 
@@ -133,6 +128,7 @@ const exec = (programs, oldRl) =>{
     }catch(err){
         
         nztk.log.error(`${err}`, 1, 'MSHLM')
+        console.log(err)
     }
 
     // create a new user

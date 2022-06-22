@@ -35,6 +35,4 @@ module.exports = (nztk, name, cb, conf) =>{
             })
         }
     });
-
-    cb({name: name, exitCode: 0, value: ''})
 }
