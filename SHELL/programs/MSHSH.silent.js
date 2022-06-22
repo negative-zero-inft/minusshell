@@ -26,11 +26,11 @@ const exec = (user, oldRl, programs) =>{
     // buuut it will also disable rl.question() output so you should reenable it
     // unless you just like abusing console.log()
 
-    const Writable = require('stream').Writable;
-    const mutableStdout = new Writable({
+    var Writable = require('stream').Writable;
+    var mutableStdout = new Writable({
 
         muted: false,
-        write: function(chunk, encoding, callback){
+        write: (chunk, encoding, callback) =>{
 
             if(!this.muted){
 
@@ -39,7 +39,7 @@ const exec = (user, oldRl, programs) =>{
             callback();
         }
     });
-    const rl = require('readline').createInterface({
+    var rl = require('readline').createInterface({
 
         input: process.stdin,
         output: mutableStdout,
@@ -114,7 +114,16 @@ const exec = (user, oldRl, programs) =>{
 
     const ask = async () =>{
 
+        await rl.close()
+        rl = await require('readline').createInterface({
+
+            input: process.stdin,
+            output: mutableStdout,
+            terminal: true
+        })
+
         // reload apps
+
         try{
 
             const cmds = fs.readdirSync(`./SHELL${globalConf.programs.path}`).filter(file => file.endsWith(`.app.js`));

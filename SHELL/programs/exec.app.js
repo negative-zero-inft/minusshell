@@ -24,6 +24,7 @@ const exec = (NZSHHStuff, cb) =>{
 
     // the entirety of your code
 
+    NZSHHStuff.appStuff.readline.close()
     const args = NZSHHStuff.input.args
     const raw = NZSHHStuff.input.raw
     const cmd = raw.substring(args[0].length)
