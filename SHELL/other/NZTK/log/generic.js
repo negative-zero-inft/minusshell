@@ -5,6 +5,8 @@ module.exports = (logObject) =>{
     const colors = require('cli-color')
     const setup = require('./setup')
     const msg = setup(logObject.message, logObject.user.name, () =>{
+        
+        // yeah this isn't the best way to do this
 
         switch(logObject.type){
 
