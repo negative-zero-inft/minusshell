@@ -1,6 +1,7 @@
 # minusshell
 ## a terminal shell of the future
 features: 
+- it's developer not giving a shit
 - running nodejs apps natively
 - full blown package manager
 - user system
